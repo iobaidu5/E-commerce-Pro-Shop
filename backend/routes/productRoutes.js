@@ -7,7 +7,6 @@ import Product from '../models/productModel.js';
 // @desc Fetch all products
 // @routes  GEt all products
 // @access Public 
-
 router.get('/', asyncHandler(async (req,res) => {
     const products = await Product.find({});
 
