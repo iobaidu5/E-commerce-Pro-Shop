@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
 import Message from '../components/message';
@@ -9,11 +9,14 @@ import { listProductsDetails } from "../actions/productActions";
 
 const ProductScreen = ({ match }) => {
   const dispatch = useDispatch();
+
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
+
+
   useEffect(() => {
-    dispatch(listProductsDetails(match.params.id));
-  }, [dispatch, match]);
+    dispatch(listProductsDetails(match.params.id))
+  }, [dispatch, match]); 
 
   return (
     <>
