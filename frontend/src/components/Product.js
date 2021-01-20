@@ -14,7 +14,7 @@ const Product = ({match}) => {
             setProduct(data);
         }
           fetchProduct();
-    }, []);
+    }, [match]);
     
     return (
         <Card className='my-3 p-3 rounded'>
