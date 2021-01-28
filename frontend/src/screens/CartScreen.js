@@ -23,9 +23,31 @@ const CartScreen = ({ match, location, history }) => {
     }, [dispatch, productId, qty]);
 
     return (
-        <div>
-            Cart
-        </div>
+        <Row>
+            <Col md={5}>
+                <h1>Shopping Cart</h1>
+                {cartItems.length === 0 ? (
+                    <Message>
+                        Your cart is empty <Link to="/">Bo back</Link>
+                    </Message>
+                ) : (
+                    <ListGroup variant='flush'>
+                        {cartItems.map(item => (
+                            <ListGroup.Item key={item.product}>
+                                <Row>
+                                    <Col md={2}>
+                                        <Image src={item.image} alt={item.name} fluid rounded />
+                                    </Col>
+                                    <Col md={3}>
+                                        <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                    </Col>
+                                </Row> 
+                            </ListGroup.Item>
+                        ))}
+                    </ListGroup>
+                )}
+            </Col>
+        </Row>
     )
 }
 
